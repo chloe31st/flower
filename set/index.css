@@ -1,0 +1,42 @@
+table {
+	border: 1px solid #000000;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+div#zenbu {
+	background:rgba(255,255,255,0.65);
+	width:700px;
+	height:800px;
+	margin:0px auto;
+}
+
+div{
+	background-color:#ffffff;
+	background:rgba(255,255,255,0.0);
+}
+div#photo {
+	image-resolution: snap;
+}
+
+
+body h1 {
+	color: white;
+}
+
+body h3{
+	background-color: #ffc0cb;
+	width:700px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+body{
+	text-align: center;
+	/*background-image:url('korage.JPG');*/
+	background: #ffffff url(./image/korage.JPG) center center fixed no-repeat;
+	/* background: #ffffff url(flowersdoor.JPG) center center fixed no-repeat; */
+	/* background-size: cover; */
+
+}
