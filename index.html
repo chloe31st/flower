@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ http:www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!-- <!DOCTYPE html>
+<html> -->
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=yes">
-     <script type="text/javascript" src="./set/index.js"></script>
+    <script type="text/javascript" src="./jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="./set/index.js"></script>
 	  <link rel="stylesheet" type="text/css" href="./set/index.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.css">
     <title>高尾山の花画像認識サイト</title>
@@ -23,12 +28,28 @@
 
     <h3>画像認識</h3>
     <p>画像アップロードしてください</p>
-    <form method=post action=https://script.google.com/macros/s/AKfycbzB6lBa6MyqKkr-j3NFQLEhs-X5mJ-KSqzKU5MJQbWXnvG-G_g5/exec enctype=multipart/form-data>
-      <input type=file name=file accept="image/gif, image/jpeg, image/png"id="imgInp">
-      <input type=submit value=アップロード id="submit" ><br>
+    <!-- <form method=post action="https://script.google.com/macros/s/AKfycbzB6lBa6MyqKkr-j3NFQLEhs-X5mJ-KSqzKU5MJQbWXnvG-G_g5/exec" enctype=multipart/form-data> -->
+    <!-- <form id="uploadForm">
+      < <input type=submit value=アップロード id="submit" ><br/> -->
+
+    <!-- 算数
+    <form id="aa" enctype="multipart/form-data">
+      <input type=text name="bb"/>
+      <input type=text name="cc"/>
+      <button type="submit">アップロード</button><br/>
+    </form> -->
+
+    <form id="uploadForm">
+      <input id="file" type=file name="file" accept="image/gif, image/jpeg, image/png"/>
+      <button id="upload" type="submit">アップロード</button><br/>
       <img id="preview_img" style="width:180px;height:150px;">
     </form>
 
+    <!-- <form id="uploadForm">
+        <input id="file" type=file name="file" accept="image/gif, image/jpeg, image/png"/>
+        <button id="upload" type="button" onclick="file_upload()">アップロード</button>
+        <img id="preview_img" style="width:180px;height:150px;">
+    </form> -->
 
     <h3>取得した情報</h3>
     <p><div id="imi">内容はここです</div></p>
@@ -43,23 +64,26 @@
 
   <script>
   document
-      .querySelector('#imgInp')
+      .querySelector('#file')
       .addEventListener('change', function(){
           //画像を選択してないとき，リセット
           if(this.files.length === 0){
               document.querySelector('#preview_img').src = '';
               return;
           }
-
           var reader = new FileReader();
-
           reader.onload = function (e) {
               //readerに入るとき，画像の値を与える
               document.querySelector('#preview_img').src = e.target.result;
           };
-
       //画像を選択，dataURLの式に変更
       reader.readAsDataURL(this.files[0]);
       }, false);
+
+
+
+
   </script>
+
+
 </html>
