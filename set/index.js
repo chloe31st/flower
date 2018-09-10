@@ -4,33 +4,30 @@ $(document).ready(function() {
 
 $("#upload").click(function(){
     var url =  "https://script.google.com/macros/s/AKfycbzB6lBa6MyqKkr-j3NFQLEhs-X5mJ-KSqzKU5MJQbWXnvG-G_g5/exec";
-    var formData = new FormData($( "#uploadForm" )[0]);  
-    for (var [key, value] of formData.entries()) { 
-        console.log(key, value);
-      };
-     $.ajax({  
-          url: url,  
-          type: 'POST',  
-          data: formData,  
-//          async: false,  
-//          cache: false,  
-//          contentType: false,  
-          processData: false,  
-          success: function (returndata) {  
-//            var jsonObj = eval('('+returndata+')');
-               $("div#imi").text(returndata+"okay");
-              //alert(jsonObj.f);  
-//              $("div#im/i").val(jsonObj.f);
-              
-             //$("#idCardBack").val(jsonObj.b);
- 
-          },  
-          error: function (returndata) {  
-              $("div#imi").text(returndata+"no okay");
-//              $("div#imi").val(returndata);
-//              alert(returndata);  
+    var formData = new FormData($( "#uploadForm" )[0]);
+    // for (var [key, value] of formData.entries()) {
+    //     console.log(key, value);
+    //   };
+     $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData,
+//          async: false,
+         // cache: false,
+//          contentType: false,
+          processData: false,
+          success: function (returndata) {
+              $("div#imi").text(returndata+" okay");
+
+
+          },
+          error: function (returndata,b,errorThrown) {
+            //  $("div#imi").text(returndata+"no okay");
+
+              $("div#imi").text(JSON.stringify(errorThrown));
+
           }
-     }); 
+     });
 //     return  false;
 });
 
@@ -57,7 +54,7 @@ $("#upload").click(function(){
 //
 //  $.ajax({
 //    type:     "POST",
-//    dat :      
+//    dat :
 //    url:      resource,
 //    dataType: "file",
 //    success:  function(data, textStatus, jqXHR) {
